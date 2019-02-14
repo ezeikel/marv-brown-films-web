@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   display: grid;
   place-items: center;
   min-height: 100vh;
+  width: 100%;
 `;
 
 const Page = props => (

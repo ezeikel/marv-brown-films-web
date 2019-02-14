@@ -21,8 +21,6 @@ export default createGlobalStyle`
   --color-grey: #BDC3C7;
   --color-dark-grey: #9B9B9B;
   --color-black: #3b3b3b;
-  --color-white: #fff;
-  --color-gold: #CDA349;
   /* Spacing */
   --spacing-tiny: 4px;
   --spacing-small: 8px;
@@ -31,7 +29,7 @@ export default createGlobalStyle`
   --spacing-huge: 64px;
   --spacing-gargantuan: 128px;
   /* Font */
-  --default-font-family: 'itc-avant-garde-gothic-pro', sans-serif;
+  --default-font-family: 'Lora', sans-serif;
   --default-font-size: 10px;
   --font-size-tiny: 1.4rem;
   --font-size-small: 1.6rem;
