@@ -1,0 +1,35 @@
+{
+  "slug": "marv-brown-films-web",
+  "worker": "marv-brown-films-web",
+  "branch": "wip/cloudflare-static-20261031",
+  "domain": "marvbrownfilms.com",
+  "apex": "marvbrownfilms.com",
+  "www": "www.marvbrownfilms.com",
+  "zone": "0fbe8edbb466ccc22e058f5ebc107cb4",
+  "cf_ns": ["maria.ns.cloudflare.com", "scott.ns.cloudflare.com"],
+  "old_ns": ["b.zeit-world.co.uk", "d.zeit-world.org", "e.zeit-world.net", "f.zeit-world.com"],
+  "vercel_ns": ["ns1.vercel-dns.com", "ns2.vercel-dns.com", "b.zeit-world.co.uk", "d.zeit-world.org", "e.zeit-world.net", "f.zeit-world.com"],
+  "vercel_ips": ["216.150.1.65", "216.150.16.65"],
+  "cf_edge_ips": ["104.21.15.33", "172.67.130.9"],
+  "mx": [[1, "aspmx.l.google.com"], [5, "alt1.aspmx.l.google.com"], [5, "alt2.aspmx.l.google.com"], [10, "alt3.aspmx.l.google.com"], [10, "alt4.aspmx.l.google.com"]],
+  "caa": ["letsencrypt.org", "pki.goog", "sectigo.com"],
+  "caa_extra_by_cloudflare": [[0, "issue", "comodoca.com"], [0, "issue", "digicert.com; cansignhttpexchanges=yes"], [0, "issue", "ssl.com"], [0, "issuewild", "comodoca.com"], [0, "issuewild", "digicert.com; cansignhttpexchanges=yes"], [0, "issuewild", "letsencrypt.org"], [0, "issuewild", "pki.goog; cansignhttpexchanges=yes"], [0, "issuewild", "ssl.com"]],
+  "temp_records": [
+    {"type": "CNAME", "name": "marvbrownfilms.com", "content": "c054198f4ffd3454.vercel-dns-016.com", "proxied": false, "ttl": 300, "comment": "TEMPORARY: keeps the site on Vercel until cutover.sh. Mirrors Vercel's apex ALIAS."},
+    {"type": "CNAME", "name": "www.marvbrownfilms.com", "content": "cname.vercel-dns-016.com", "proxied": false, "ttl": 300, "comment": "TEMPORARY: keeps the site on Vercel until cutover.sh. Mirrors Vercel's wildcard ALIAS."},
+    {"type": "CNAME", "name": "*.marvbrownfilms.com", "content": "cname.vercel-dns-016.com", "proxied": false, "ttl": 300, "comment": "TEMPORARY: Vercel's wildcard ALIAS. Deleted by cutover.sh."}
+  ],
+  "pages": {
+    "/": {"status": 200, "type": "text/html", "text": "Marv Brown Films London based Wedding Videographer Cassandra + Karl Priscilla + Sellasie Swodei + Emmanuel"},
+    "/index": {"status": 200, "type": "text/html", "same_as": "/"},
+    "/index/": {"status": 200, "type": "text/html", "same_as": "/"},
+    "/static/logos/logo-black.png": {"status": 200, "type": "image/png", "text": "png-black-bytes"},
+    "/static/logos/logo-white.png": {"status": 200, "type": "image/png", "text": "png-white-bytes"},
+    "/_next/static/YRiwSN3fskDON_2D4EVQd/pages/index.js": {"status": 200, "type": "application/javascript", "text": "index-js"},
+    "/_next/static/YRiwSN3fskDON_2D4EVQd/pages/_app.js": {"status": 200, "type": "application/javascript", "text": "app-js"},
+    "/_next/static/YRiwSN3fskDON_2D4EVQd/pages/_error.js": {"status": 200, "type": "application/javascript", "text": "error-js"},
+    "/_next/static/runtime/main-182a4db10b852a4792ee.js": {"status": 200, "type": "application/javascript", "text": "main-js"},
+    "/_next/static/runtime/webpack-f0c6edbea5b547edc23f.js": {"status": 200, "type": "application/javascript", "text": "webpack-js"},
+    "/_next/static/chunks/commons.8beb641fac3a66854f49.js": {"status": 200, "type": "application/javascript", "text": "commons-js"}
+  }
+}
