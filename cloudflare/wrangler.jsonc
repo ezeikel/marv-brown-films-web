@@ -1,0 +1,19 @@
+// Marv Brown Films: the captured static site (site/) on Workers static assets, workers.dev only until the cutover
+// (docs/cloudflare/CUTOVER.md attaches marvbrownfilms.com and www.marvbrownfilms.com as custom domains).
+// worker.ts runs first for every request: it keeps the redirects, the 404 and the headers Vercel sent, and
+// decides which files exist, so the assets binding does no HTML or 404 handling of its own.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "marv-brown-films-web",
+  "main": "worker.ts",
+  "compatibility_date": "2026-10-21",
+  "workers_dev": true,
+  "assets": {
+    "directory": "site",
+    "binding": "ASSETS",
+    "html_handling": "none",
+    "not_found_handling": "none",
+    "run_worker_first": true,
+  },
+  "observability": { "enabled": true },
+}

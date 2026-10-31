@@ -1,0 +1,21 @@
+{
+  "name": "marv-brown-films-web-cloudflare",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloudflare Worker that serves the captured marvbrownfilms.com site (see ../docs/cloudflare)",
+  "packageManager": "pnpm@10.25.0",
+  "scripts": {
+    "test": "node --test worker.test.mjs",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "4.151.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "workerd"
+    ]
+  }
+}
