@@ -1,0 +1,35 @@
+{
+  "domain": "marvbrownfilms.com",
+  "captured": "2026-10-31",
+  "source": "Vercel DNS as served by ns1.vercel-dns.com, ns2.vercel-dns.com and the four registrar-delegated b/d/e/f.zeit-world.* servers (identical zone data, SOA serial 1652519944), and `vercel dns ls` / GET /v5/domains/marvbrownfilms.com/records (10 records)",
+  "permanent": [
+    { "type": "MX", "name": "@", "content": "aspmx.l.google.com", "priority": 1, "ttl": 60, "comment": "Google Workspace mail, mirrored from Vercel DNS 31 Oct 2026. Do not change." },
+    { "type": "MX", "name": "@", "content": "alt1.aspmx.l.google.com", "priority": 5, "ttl": 60, "comment": "Google Workspace mail, mirrored from Vercel DNS 31 Oct 2026. Do not change." },
+    { "type": "MX", "name": "@", "content": "alt2.aspmx.l.google.com", "priority": 5, "ttl": 60, "comment": "Google Workspace mail, mirrored from Vercel DNS 31 Oct 2026. Do not change." },
+    { "type": "MX", "name": "@", "content": "alt3.aspmx.l.google.com", "priority": 10, "ttl": 60, "comment": "Google Workspace mail, mirrored from Vercel DNS 31 Oct 2026. Do not change." },
+    { "type": "MX", "name": "@", "content": "alt4.aspmx.l.google.com", "priority": 10, "ttl": 60, "comment": "Google Workspace mail, mirrored from Vercel DNS 31 Oct 2026. Do not change." },
+    { "type": "CAA", "name": "@", "data": { "flags": 0, "tag": "issue", "value": "letsencrypt.org" }, "ttl": 60, "comment": "Mirrored from Vercel DNS defaults 31 Oct 2026" },
+    { "type": "CAA", "name": "@", "data": { "flags": 0, "tag": "issue", "value": "pki.goog" }, "ttl": 60, "comment": "Mirrored from Vercel DNS defaults 31 Oct 2026" },
+    { "type": "CAA", "name": "@", "data": { "flags": 0, "tag": "issue", "value": "sectigo.com" }, "ttl": 60, "comment": "Mirrored from Vercel DNS defaults 31 Oct 2026" }
+  ],
+  "temporary": [
+    { "type": "CNAME", "name": "@", "content": "c054198f4ffd3454.vercel-dns-016.com", "proxied": false, "ttl": 300, "comment": "TEMPORARY: keeps the site on Vercel until cutover.sh. Mirrors Vercel's apex ALIAS." },
+    { "type": "CNAME", "name": "www", "content": "cname.vercel-dns-016.com", "proxied": false, "ttl": 300, "comment": "TEMPORARY: keeps the site on Vercel until cutover.sh. Mirrors Vercel's wildcard ALIAS." },
+    { "type": "CNAME", "name": "*", "content": "cname.vercel-dns-016.com", "proxied": false, "ttl": 300, "comment": "TEMPORARY: Vercel's wildcard ALIAS. Deleted by cutover.sh." }
+  ],
+  "not_copied": [
+    {
+      "type": "CNAME",
+      "name": "_domainconnect",
+      "content": "_domainconnect.vercel-dns.com.",
+      "ttl": 3600,
+      "why": "Vercel adds this itself to every zone it hosts (Domain Connect discovery for Vercel DNS). It is not in the account's record list, has nothing to do with mail or the website, and would advertise Vercel as the DNS provider after Vercel stops hosting the zone."
+    },
+    {
+      "type": "NS/SOA",
+      "name": "@",
+      "why": "Cloudflare writes its own."
+    }
+  ],
+  "expect_txt": []
+}

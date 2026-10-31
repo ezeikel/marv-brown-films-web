@@ -1,0 +1,270 @@
+Evidence for the DNS move of marvbrownfilms.com, collected 2026-10-31T07:55Z. Read-only queries (dig, vercel dns ls, Cloudflare GET).
+
+## 1. Vercel DNS: the account's record list (vercel dns ls marvbrownfilms.com --scope chewy-bytes)
+    <claude-code-hint v="1" type="plugin" value="vercel@claude-plugins-official" />
+    > Records found under chewy-bytes [197ms]
+    
+    marvbrownfilms.com
+                                       id    name    type     value                                       created             
+             rec_35dcc73c01f87f05d15532e0            MX       10 alt4.aspmx.l.google.com.                 2780d ago           
+             rec_3f46fcd1473053bded448e38            MX       10 alt3.aspmx.l.google.com.                 2780d ago           
+             rec_64a3bc9a47862358bc6eae69            MX       5 alt2.aspmx.l.google.com.                  2780d ago           
+             rec_756b47358f693f9dc955c9fe            MX       5 alt1.aspmx.l.google.com.                  2780d ago           
+             rec_4978d49d005344988f8c2b38            MX       1 aspmx.l.google.com.                       2780d ago           
+                                                     CAA      0 issue "pki.goog"                          default             
+                                                     CAA      0 issue "sectigo.com"                       default             
+                                             *       ALIAS    cname.vercel-dns-016.com.                   default             
+                                                     ALIAS    c054198f4ffd3454.vercel-dns-016.com         default             
+                                                     CAA      0 issue "letsencrypt.org"                   default             
+
+## 2. The registry's delegation (what GoDaddy has published) and WHOIS
+    marvbrownfilms.com. 172800 IN NS f.zeit-world.com.
+    marvbrownfilms.com. 172800 IN NS e.zeit-world.net.
+    marvbrownfilms.com. 172800 IN NS d.zeit-world.org.
+    marvbrownfilms.com. 172800 IN NS b.zeit-world.co.uk.
+    DS records at the registry:
+    (none printed above = no DS record, DNSSEC is not in use)
+    DNSSEC: unsigned
+    Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+    Domain Status: clientRenewProhibited https://icann.org/epp#clientRenewProhibited
+    Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+    Domain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited
+    Name Server: B.ZEIT-WORLD.CO.UK
+    Name Server: D.ZEIT-WORLD.ORG
+    Name Server: E.ZEIT-WORLD.NET
+    Name Server: F.ZEIT-WORLD.COM
+    Registrar: GoDaddy.com, LLC
+    Registry Expiry Date: 2027-04-30T12:30:22Z
+
+## 3. Every record type that matters, on each of the six servers Vercel answers from, and on Cloudflare's two
+### @ns1.vercel-dns.com
+    [SOA] marvbrownfilms.com. 3600 IN SOA ns1.vercel-dns.com. hostmaster.nsone.net. 1652519944 43200 7200 1209600 600
+    [NS] marvbrownfilms.com. 86400 IN NS ns1.vercel-dns.com.
+    [NS] marvbrownfilms.com. 86400 IN NS ns2.vercel-dns.com.
+    [MX] marvbrownfilms.com. 60 IN MX 1 aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 10 alt3.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 10 alt4.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 5 alt1.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 5 alt2.aspmx.l.google.com.
+    [TXT] (none)
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "letsencrypt.org"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "pki.goog"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "sectigo.com"
+    [A] marvbrownfilms.com. 1800 IN A 216.150.16.193
+    [A] marvbrownfilms.com. 1800 IN A 216.150.16.65
+    [www CNAME/A] 216.150.1.65 216.150.16.1 
+    [_domainconnect CNAME] _domainconnect.vercel-dns.com. 
+    [_dmarc TXT] (empty = none)
+    [google._domainkey TXT] (empty = none)
+### @ns2.vercel-dns.com
+    [SOA] marvbrownfilms.com. 3600 IN SOA ns1.vercel-dns.com. hostmaster.nsone.net. 1652519944 43200 7200 1209600 600
+    [NS] marvbrownfilms.com. 86400 IN NS ns1.vercel-dns.com.
+    [NS] marvbrownfilms.com. 86400 IN NS ns2.vercel-dns.com.
+    [MX] marvbrownfilms.com. 60 IN MX 1 aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 10 alt3.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 10 alt4.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 5 alt1.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 5 alt2.aspmx.l.google.com.
+    [TXT] (none)
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "letsencrypt.org"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "pki.goog"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "sectigo.com"
+    [A] marvbrownfilms.com. 1800 IN A 216.150.16.1
+    [A] marvbrownfilms.com. 1800 IN A 216.150.1.1
+    [www CNAME/A] 216.150.1.1 216.150.16.1 
+    [_domainconnect CNAME] _domainconnect.vercel-dns.com. 
+    [_dmarc TXT] (empty = none)
+    [google._domainkey TXT] (empty = none)
+### @b.zeit-world.co.uk
+    [SOA] marvbrownfilms.com. 3600 IN SOA ns1.vercel-dns.com. hostmaster.nsone.net. 1652519944 43200 7200 1209600 600
+    [NS] marvbrownfilms.com. 86400 IN NS ns1.vercel-dns.com.
+    [NS] marvbrownfilms.com. 86400 IN NS ns2.vercel-dns.com.
+    [MX] marvbrownfilms.com. 60 IN MX 1 aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 10 alt3.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 10 alt4.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 5 alt1.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 5 alt2.aspmx.l.google.com.
+    [TXT] (none)
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "letsencrypt.org"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "pki.goog"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "sectigo.com"
+    [A] marvbrownfilms.com. 1800 IN A 216.150.1.1
+    [A] marvbrownfilms.com. 1800 IN A 216.150.1.65
+    [www CNAME/A] 216.150.16.1 216.150.16.129 
+    [_domainconnect CNAME] _domainconnect.vercel-dns.com. 
+    [_dmarc TXT] (empty = none)
+    [google._domainkey TXT] (empty = none)
+### @d.zeit-world.org
+    [SOA] marvbrownfilms.com. 3600 IN SOA ns1.vercel-dns.com. hostmaster.nsone.net. 1652519944 43200 7200 1209600 600
+    [NS] marvbrownfilms.com. 86400 IN NS ns1.vercel-dns.com.
+    [NS] marvbrownfilms.com. 86400 IN NS ns2.vercel-dns.com.
+    [MX] marvbrownfilms.com. 60 IN MX 1 aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 10 alt3.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 10 alt4.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 5 alt1.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 5 alt2.aspmx.l.google.com.
+    [TXT] (none)
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "letsencrypt.org"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "pki.goog"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "sectigo.com"
+    [A] marvbrownfilms.com. 1800 IN A 216.150.1.1
+    [A] marvbrownfilms.com. 1800 IN A 216.150.16.193
+    [www CNAME/A] 216.150.16.1 216.150.1.1 
+    [_domainconnect CNAME] _domainconnect.vercel-dns.com. 
+    [_dmarc TXT] (empty = none)
+    [google._domainkey TXT] (empty = none)
+### @e.zeit-world.net
+    [SOA] marvbrownfilms.com. 3600 IN SOA ns1.vercel-dns.com. hostmaster.nsone.net. 1652519944 43200 7200 1209600 600
+    [NS] marvbrownfilms.com. 86400 IN NS ns1.vercel-dns.com.
+    [NS] marvbrownfilms.com. 86400 IN NS ns2.vercel-dns.com.
+    [MX] marvbrownfilms.com. 60 IN MX 1 aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 10 alt3.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 10 alt4.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 5 alt1.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 5 alt2.aspmx.l.google.com.
+    [TXT] (none)
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "letsencrypt.org"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "pki.goog"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "sectigo.com"
+    [A] marvbrownfilms.com. 1800 IN A 216.150.1.65
+    [A] marvbrownfilms.com. 1800 IN A 216.150.1.193
+    [www CNAME/A] 216.150.16.1 216.150.1.65 
+    [_domainconnect CNAME] _domainconnect.vercel-dns.com. 
+    [_dmarc TXT] (empty = none)
+    [google._domainkey TXT] (empty = none)
+### @f.zeit-world.com
+    [SOA] marvbrownfilms.com. 3600 IN SOA ns1.vercel-dns.com. hostmaster.nsone.net. 1652519944 43200 7200 1209600 600
+    [NS] marvbrownfilms.com. 86400 IN NS ns1.vercel-dns.com.
+    [NS] marvbrownfilms.com. 86400 IN NS ns2.vercel-dns.com.
+    [MX] marvbrownfilms.com. 60 IN MX 1 aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 10 alt3.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 10 alt4.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 5 alt1.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 5 alt2.aspmx.l.google.com.
+    [TXT] (none)
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "letsencrypt.org"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "pki.goog"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "sectigo.com"
+    [A] marvbrownfilms.com. 1800 IN A 216.150.16.65
+    [A] marvbrownfilms.com. 1800 IN A 216.150.16.193
+    [www CNAME/A] 216.150.1.65 216.150.1.1 
+    [_domainconnect CNAME] _domainconnect.vercel-dns.com. 
+    [_dmarc TXT] (empty = none)
+    [google._domainkey TXT] (empty = none)
+### @maria.ns.cloudflare.com
+    [SOA] marvbrownfilms.com. 1800 IN SOA maria.ns.cloudflare.com. dns.cloudflare.com. 2418917033 10000 2400 604800 1800
+    [NS] marvbrownfilms.com. 86400 IN NS maria.ns.cloudflare.com.
+    [NS] marvbrownfilms.com. 86400 IN NS scott.ns.cloudflare.com.
+    [MX] marvbrownfilms.com. 60 IN MX 1 aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 10 alt3.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 10 alt4.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 5 alt1.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 5 alt2.aspmx.l.google.com.
+    [TXT] (none)
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "comodoca.com"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "digicert.com; cansignhttpexchanges=yes"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "letsencrypt.org"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "pki.goog; cansignhttpexchanges=yes"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "sectigo.com"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "ssl.com"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issuewild "comodoca.com"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issuewild "digicert.com; cansignhttpexchanges=yes"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issuewild "letsencrypt.org"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issuewild "pki.goog; cansignhttpexchanges=yes"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issuewild "ssl.com"
+    [A] marvbrownfilms.com. 300 IN A 216.150.1.193
+    [A] marvbrownfilms.com. 300 IN A 216.150.16.193
+    [www CNAME/A] cname.vercel-dns-016.com. cname.vercel-dns-016.com. 
+    [_domainconnect CNAME] cname.vercel-dns-016.com. 
+    [_dmarc TXT] cname.vercel-dns-016.com. (empty = none)
+    [google._domainkey TXT] cname.vercel-dns-016.com. (empty = none)
+### @scott.ns.cloudflare.com
+    [SOA] marvbrownfilms.com. 1800 IN SOA maria.ns.cloudflare.com. dns.cloudflare.com. 2418917033 10000 2400 604800 1800
+    [NS] marvbrownfilms.com. 86400 IN NS maria.ns.cloudflare.com.
+    [NS] marvbrownfilms.com. 86400 IN NS scott.ns.cloudflare.com.
+    [MX] marvbrownfilms.com. 60 IN MX 1 aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 10 alt3.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 10 alt4.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 5 alt1.aspmx.l.google.com.
+    [MX] marvbrownfilms.com. 60 IN MX 5 alt2.aspmx.l.google.com.
+    [TXT] (none)
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "comodoca.com"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "digicert.com; cansignhttpexchanges=yes"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "letsencrypt.org"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "pki.goog; cansignhttpexchanges=yes"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "sectigo.com"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issue "ssl.com"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issuewild "comodoca.com"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issuewild "digicert.com; cansignhttpexchanges=yes"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issuewild "letsencrypt.org"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issuewild "pki.goog; cansignhttpexchanges=yes"
+    [CAA] marvbrownfilms.com. 60 IN CAA 0 issuewild "ssl.com"
+    [A] marvbrownfilms.com. 300 IN A 216.150.16.193
+    [A] marvbrownfilms.com. 300 IN A 216.150.1.193
+    [www CNAME/A] cname.vercel-dns-016.com. cname.vercel-dns-016.com. 
+    [_domainconnect CNAME] cname.vercel-dns-016.com. 
+    [_dmarc TXT] cname.vercel-dns-016.com. (empty = none)
+    [google._domainkey TXT] cname.vercel-dns-016.com. (empty = none)
+
+## 4. The comparison (dns/verify-dns.py): MX and TXT must be identical, CAA may be a superset
+    ok   auth     maria.ns.cloudflare.com    MX 5 (1 aspmx, 5 alt1, 5 alt2, 10 alt3, 10 alt4)  TXT 0  CAA 11 (+8 extra)
+           apex A    216.150.1.129 (ttl 300), 216.150.16.129 (ttl 300)
+           www CNAME cname.vercel-dns-016.com. (ttl 300)
+           www A     cname.vercel-dns-016.com. (ttl 300)
+    ok   auth     scott.ns.cloudflare.com    MX 5 (1 aspmx, 5 alt1, 5 alt2, 10 alt3, 10 alt4)  TXT 0  CAA 11 (+8 extra)
+           apex A    216.150.1.1 (ttl 300), 216.150.16.1 (ttl 300)
+           www CNAME cname.vercel-dns-016.com. (ttl 300)
+           www A     cname.vercel-dns-016.com. (ttl 300)
+    ok   auth     ns1.vercel-dns.com         MX 5 (1 aspmx, 5 alt1, 5 alt2, 10 alt3, 10 alt4)  TXT 0  CAA 3
+           apex A    216.150.1.1 (ttl 1800), 216.150.1.65 (ttl 1800)
+           www CNAME no answer
+           www A     216.150.16.65 (ttl 1800), 216.150.16.193 (ttl 1800)
+    ok   auth     ns2.vercel-dns.com         MX 5 (1 aspmx, 5 alt1, 5 alt2, 10 alt3, 10 alt4)  TXT 0  CAA 3
+           apex A    216.150.16.65 (ttl 1800), 216.150.16.129 (ttl 1800)
+           www CNAME no answer
+           www A     216.150.1.193 (ttl 1800), 216.150.1.65 (ttl 1800)
+    ok   auth     b.zeit-world.co.uk         MX 5 (1 aspmx, 5 alt1, 5 alt2, 10 alt3, 10 alt4)  TXT 0  CAA 3
+           apex A    216.150.1.129 (ttl 1800), 216.150.16.129 (ttl 1800)
+           www CNAME no answer
+           www A     216.150.16.65 (ttl 1800), 216.150.16.193 (ttl 1800)
+    ok   auth     d.zeit-world.org           MX 5 (1 aspmx, 5 alt1, 5 alt2, 10 alt3, 10 alt4)  TXT 0  CAA 3
+           apex A    216.150.1.65 (ttl 1800), 216.150.1.129 (ttl 1800)
+           www CNAME no answer
+           www A     216.150.1.1 (ttl 1800), 216.150.16.129 (ttl 1800)
+    ok   auth     e.zeit-world.net           MX 5 (1 aspmx, 5 alt1, 5 alt2, 10 alt3, 10 alt4)  TXT 0  CAA 3
+           apex A    216.150.16.65 (ttl 1800), 216.150.16.129 (ttl 1800)
+           www CNAME no answer
+           www A     216.150.1.1 (ttl 1800), 216.150.16.1 (ttl 1800)
+    ok   auth     f.zeit-world.com           MX 5 (1 aspmx, 5 alt1, 5 alt2, 10 alt3, 10 alt4)  TXT 0  CAA 3
+           apex A    216.150.1.193 (ttl 1800), 216.150.16.129 (ttl 1800)
+           www CNAME no answer
+           www A     216.150.1.193 (ttl 1800), 216.150.1.129 (ttl 1800)
+    ok   resolver 1.1.1.1                    MX 5 (1 aspmx, 5 alt1, 5 alt2, 10 alt3, 10 alt4)  TXT 0  CAA 3
+           apex A    216.150.1.1 (ttl 1800), 216.150.16.193 (ttl 1800)
+           www CNAME no answer
+           www A     216.150.16.65 (ttl 1800), 216.150.1.1 (ttl 1800)
+    ok   resolver 8.8.8.8                    MX 5 (1 aspmx, 5 alt1, 5 alt2, 10 alt3, 10 alt4)  TXT 0  CAA 3
+           apex A    216.150.16.1 (ttl 1800), 216.150.1.65 (ttl 1800)
+           www CNAME no answer
+           www A     216.150.16.65 (ttl 1800), 216.150.1.129 (ttl 1800)
+    ok   resolver 9.9.9.9                    MX 5 (1 aspmx, 5 alt1, 5 alt2, 10 alt3, 10 alt4)  TXT 0  CAA 3
+           apex A    216.150.16.129 (ttl 1475), 216.150.1.129 (ttl 1475)
+           www CNAME no answer
+           www A     216.150.1.65 (ttl 1475), 216.150.1.193 (ttl 1475)
+    mail records identical on every server
+    exit status: 0
+
+## 5. The Cloudflare zone as stored (API, GET)
+    zone 0fbe8edbb466ccc22e058f5ebc107cb4 marvbrownfilms.com status pending | plan Free Website | nameservers maria.ns.cloudflare.com, scott.ns.cloudflare.com | original nameservers b.zeit-world.co.uk, d.zeit-world.org, e.zeit-world.net, f.zeit-world.com | registrar godaddy.com, llc (id: 146)
+    CAA   marvbrownfilms.com           0 issue "sectigo.com"                    ttl 60   proxied False
+    CAA   marvbrownfilms.com           0 issue "pki.goog"                       ttl 60   proxied False
+    CAA   marvbrownfilms.com           0 issue "letsencrypt.org"                ttl 60   proxied False
+    CNAME *.marvbrownfilms.com         cname.vercel-dns-016.com                 ttl 300  proxied False
+    CNAME marvbrownfilms.com           c054198f4ffd3454.vercel-dns-016.com      ttl 300  proxied False
+    CNAME www.marvbrownfilms.com       cname.vercel-dns-016.com                 ttl 300  proxied False
+    MX    marvbrownfilms.com           aspmx.l.google.com (priority 1)          ttl 60   proxied False
+    MX    marvbrownfilms.com           alt2.aspmx.l.google.com (priority 5)     ttl 60   proxied False
+    MX    marvbrownfilms.com           alt1.aspmx.l.google.com (priority 5)     ttl 60   proxied False
+    MX    marvbrownfilms.com           alt4.aspmx.l.google.com (priority 10)    ttl 60   proxied False
+    MX    marvbrownfilms.com           alt3.aspmx.l.google.com (priority 10)    ttl 60   proxied False
+    setting email_obfuscation = off (changed from the default on 2026-10-31)

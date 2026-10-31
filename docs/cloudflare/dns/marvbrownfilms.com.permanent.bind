@@ -1,0 +1,12 @@
+; marvbrownfilms.com: the permanent records (Google Workspace mail + CAA), mirrored from Vercel DNS on 31 Oct 2026.
+; The three temporary records that keep the website on Vercel are NOT here on purpose: do not import them.
+$ORIGIN marvbrownfilms.com.
+$TTL 60
+@	60	IN	MX	1	aspmx.l.google.com.
+@	60	IN	MX	5	alt1.aspmx.l.google.com.
+@	60	IN	MX	5	alt2.aspmx.l.google.com.
+@	60	IN	MX	10	alt3.aspmx.l.google.com.
+@	60	IN	MX	10	alt4.aspmx.l.google.com.
+@	60	IN	CAA	0 issue "letsencrypt.org"
+@	60	IN	CAA	0 issue "pki.goog"
+@	60	IN	CAA	0 issue "sectigo.com"
